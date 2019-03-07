@@ -1,0 +1,11 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+	delete ucitrack.@Infiltration[-1]
+	add ucitrack Infiltration
+	set ucitrack.@Infiltration[-1].init=Infiltration
+	commit ucitrack
+EOF
+
+rm -f /tmp/luci-indexcache
+exit 0
